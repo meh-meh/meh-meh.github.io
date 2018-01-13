@@ -19,6 +19,7 @@ function Particle(x, y, hu, firework) {
 
   this.applyForce = function(force) {
     this.acc.y += force;
+    this.acc.x += 0;
   }
 
   this.update = function() {
