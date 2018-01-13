@@ -3,9 +3,9 @@
 // http://patreon.com/codingtrain
 // Code for: https://youtu.be/CKeyIbT3vXI
 
-function Firework() {
-  this.hu = random(255);
-  this.firework = new Particle(random(width), height, this.hu, true);
+function Firework(p, gravity) {
+  this.hu = p.random(255);
+  this.firework = new Particle(p, p.random(p.width), p.height, this.hu, true);
   this.exploded = false;
   this.particles = [];
 
@@ -24,7 +24,7 @@ function Firework() {
 
       if (this.firework.vel.y > -5) {
         this.exploded = true;
-        this.explode();
+        this.explode(p);
       }
     }
 
@@ -38,10 +38,10 @@ function Firework() {
     }
   }
 
-  this.explode = function() {
+  this.explode = function(p) {
     for (var i = 0; i < 100; i++) {
-      var p = new Particle(this.firework.pos.x, this.firework.pos.y, this.hu, false);
-      this.particles.push(p);
+      var pt = new Particle(p, this.firework.pos.x, this.firework.pos.y, this.hu, false);
+      this.particles.push(pt);
     }
   }
 

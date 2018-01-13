@@ -3,31 +3,31 @@
 // http://patreon.com/codingtrain
 // Code for: https://youtu.be/CKeyIbT3vXI
 
-var oldway = function(p){
+function oldway(){
   var fireworks = [];
   var gravity;
 
 
-  p.setup = function() {
+  function setup() {
     // var cnv_old = createCanvas(800, 600);
     // var x = (windowWidth - width) / 2;
     // var y = (windowHeight - height) / 2;
     // cnv.position(x, y);
-    var cnv_old = p.createCanvas(800, 600);
+    var cnv_old = createCanvas(800, 600);
     cnv_old.parent('sketch-holder-old');
-    p.colorMode(p.HSB);
-    gravity = p.createVector(0, 0.13);
-    p.stroke(255);
-    p.strokeWeight(4);
-    p.background(0);
-  };
+    colorMode(HSB);
+    gravity = createVector(0, 0.15);
+    stroke(255);
+    strokeWeight(4);
+    background(0);
+  }
 
-  p.draw = function() {
-    p.colorMode(p.RGB);
-    p.background(0, 0, 0, 25);
+  function draw() {
+    colorMode(RGB);
+    background(0, 0, 0, 25);
 
-    if (p.random(1) < 0.03) {
-      fireworks.push(new OldFirework(p, gravity));
+    if (random(1) < 0.03) {
+      fireworks.push(new OldFirework());
     }
 
     for (var i = fireworks.length - 1; i >= 0; i--) {
@@ -38,33 +38,33 @@ var oldway = function(p){
         fireworks.splice(i, 1);
       }
     }
-  };
-};
+  }
+}
 
-var newway = function(p){
+function newway(){
   var fireworks = [];
   var gravity;
 
-  p.setup = function() {
-    var cnv = p.createCanvas(800, 600);
+  function setup() {
+    var cnv = createCanvas(800, 600);
     // var x = (windowWidth - width) / 2;
     // var y = (windowHeight - height) / 2;
     // cnv.position(x, y);
     cnv.parent('sketch-holder');
 
-    // p.colorMode(HSB);
-    gravity = p.createVector(0, 0.15);
-    p.stroke(255);
-    p.strokeWeight(4);
-    p.background(0);
-  };
+    colorMode(HSB);
+    gravity = createVector(0, 0.15);
+    stroke(255);
+    strokeWeight(4);
+    background(0);
+  }
 
-  p.draw = function() {
-    p.colorMode(p.RGB);
-    p.background(0, 0, 0, 25);
+  function draw() {
+    colorMode(RGB);
+    background(0, 0, 0, 25);
 
-    if (p.random(1) < 0.03) {
-      fireworks.push(new Firework(p, gravity));
+    if (random(1) < 0.03) {
+      fireworks.push(new Firework());
     }
 
     for (var i = fireworks.length - 1; i >= 0; i--) {
@@ -75,8 +75,5 @@ var newway = function(p){
         fireworks.splice(i, 1);
       }
     }
-  };
-};
-
-var hisp5 = new p5(oldway);
-var myp5 = new p5(newway);
+  }
+}

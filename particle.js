@@ -3,18 +3,18 @@
 // http://patreon.com/codingtrain
 // Code for: https://youtu.be/CKeyIbT3vXI
 
-function Particle(x, y, hu, firework) {
-  this.pos = createVector(x, y);
+function Particle(p, x, y, hu, firework) {
+  this.pos = p.createVector(x, y);
   this.firework = firework;
   this.lifespan = 255;
   this.hu = hu;
-  this.acc = createVector(0, 0);
+  this.acc = p.createVector(0, 0);
 
   if (this.firework) {
-    this.vel = createVector(random(-1.1,1.1), random(-14, -9));
+    this.vel = p.createVector(p.random(-1.1,1.1), p.random(-14, -9));
   } else {
     this.vel = p5.Vector.random2D();
-    this.vel.mult(random(2, 7));
+    this.vel.mult(p.random(2, 7));
     this.vel.add(parent.vel);
   }
 
@@ -34,7 +34,7 @@ function Particle(x, y, hu, firework) {
   }
 
   this.done = function() {
-    if (this.lifespan < 0 || random() < 0.1) {
+    if (this.lifespan < 0 || p.random() < 0.1) {
       return true;
     } else {
       return false;
@@ -42,16 +42,16 @@ function Particle(x, y, hu, firework) {
   }
 
   this.show = function() {
-    colorMode(HSB);
+    p.colorMode(p.HSB);
 
     if (!this.firework) {
-      strokeWeight(2);
-      stroke(hu, 255, 255, this.lifespan);
+      p.strokeWeight(2);
+      p.stroke(hu, 255, 255, this.lifespan);
     } else {
-      strokeWeight(4);
-      stroke(hu, 255, 255);
+      p.strokeWeight(4);
+      p.stroke(hu, 255, 255);
     }
 
-    point(this.pos.x, this.pos.y);
+    p.point(this.pos.x, this.pos.y);
   }
 }
