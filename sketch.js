@@ -7,9 +7,14 @@ var fireworks = [];
 var gravity;
 
 function setup() {
-  createCanvas(400, 300);
+  var cnv = createCanvas(800, 600);
+  // var x = (windowWidth - width) / 2;
+  // var y = (windowHeight - height) / 2;
+  // cnv.position(x, y);
+  cnv.parent('sketch-holder');
+  
   colorMode(HSB);
-  gravity = createVector(0, 0.2);
+  gravity = createVector(0, 0.15);
   stroke(255);
   strokeWeight(4);
   background(0);
